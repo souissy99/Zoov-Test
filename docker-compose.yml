@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  zoov:
+
+services:
+  api:
+    build: ./Api
+    networks:
+      - backend
+    ports:
+      - 8081:8081
+    networks:
+      - zoov
+    command: npm run start
+
+  ui:
+    build: ./Zoov
+    ports:
+      - 3000:3000
+    networks:
+      - zoov
+    command: npm run dev
